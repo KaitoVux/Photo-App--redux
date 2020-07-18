@@ -1,0 +1,16 @@
+.banner {
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+
+  background-image: url(../../assets/images/house.jpg);
+  background-position: center;
+  background-size: cover;
+
+  &__title {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+  }
+}

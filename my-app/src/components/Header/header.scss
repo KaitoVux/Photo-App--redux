@@ -1,0 +1,20 @@
+.header {
+  padding: 1rem 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__link {
+    color: #000000;
+    transition: all 0.25s ease-in-out 0s;
+
+    &__link--active,
+    &:hover {
+      text-decoration: none;
+      color: var(--primary);
+    }
+  }
+}
