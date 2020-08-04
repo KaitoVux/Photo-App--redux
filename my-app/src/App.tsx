@@ -1,10 +1,7 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import NotFound from './components/NotFound';
 import './App.scss';
-import { Header } from './components/Header/header';
-import Banner from './components/Banner/Banner';
-import Images from './constants/Images';
+import NotFound from './components/NotFound';
 
 // Lazy load - Code splitting
 const Photo = React.lazy(() => import('./features/Photo'));

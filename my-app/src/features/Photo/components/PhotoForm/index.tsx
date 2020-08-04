@@ -5,6 +5,7 @@ import SelectField from 'custom-fields/SelectField';
 import { FastField, Form, Formik, FormikValues } from 'formik';
 import React from 'react';
 import { Button, FormGroup } from 'reactstrap';
+import * as yup from 'yup';
 
 
 interface PhotoFormProps {
@@ -12,19 +13,28 @@ interface PhotoFormProps {
 }
 
 function PhotoForm(props: PhotoFormProps) {
+
     const initialValues = {
         title: "",
-        categoryId: "",
+        categoryId: null,
+        photo: "",
     };
+
+    const validationShema = yup.object().shape({
+        title: yup.string().required("Title is required!"),
+
+        categoryId: yup.number().integer().required("Category is required!").nullable(),
+
+        photo: yup.string().required("Please choose your photo!"),
+    })
+
     return (
         <Formik
             initialValues={initialValues}
+            validationSchema={validationShema}
             onSubmit={(values: FormikValues) => { console.log("values", values) }}
         >
             {(formikProps: any) => {
-
-                const { values, errors, touched } = formikProps;
-
                 return (
                     <Form>
                         <FastField

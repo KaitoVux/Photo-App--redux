@@ -1,13 +1,14 @@
+import Images from "constants/Images";
 import React, { FC } from "react";
 import { Button } from "reactstrap";
 import './RandomPhoto.scss';
-import Images from "constants/Images";
 
 interface RandomPhotoProps {
     name: string,
     imageUrl: string,
     onImageUrlChange: (url: string) => void,
     onRandomButtonBlur: (e: any) => void,
+    classname: string,
 }
 
 interface RandomPhotostate {
@@ -19,8 +20,9 @@ const getRandomImgUrl = () => {
     return `https://picsum.photos/id/${id}/300/300`;
 }
 
+
 const RandomPhoto: FC<RandomPhotoProps> = (props: RandomPhotoProps) => {
-    const { name, imageUrl, onImageUrlChange, onRandomButtonBlur } = props;
+    const { name, imageUrl, onImageUrlChange, onRandomButtonBlur, classname } = props;
 
     const handleRandomPhotoClick = async () => {
         const imgUrl = getRandomImgUrl();
@@ -28,7 +30,7 @@ const RandomPhoto: FC<RandomPhotoProps> = (props: RandomPhotoProps) => {
     }
 
     return (
-        <div className="random-photo">
+        <div className={`random-photo ${classname ? "is-invalid" : ""}`}>
             <div className="random-photo__button">
                 <Button
                     outline
@@ -52,5 +54,6 @@ RandomPhoto.defaultProps = {
     name: "",
     imageUrl: Images.BOAT_BG,
 }
+
 
 export default RandomPhoto;

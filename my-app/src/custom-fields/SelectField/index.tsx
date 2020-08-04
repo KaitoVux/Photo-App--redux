@@ -1,10 +1,11 @@
+import { ErrorMessage, FieldInputProps, FormikProps } from "formik";
 import React from "react";
 import Select from 'react-select';
-import { FormGroup, Label } from "reactstrap";
+import { FormFeedback, FormGroup, Label } from "reactstrap";
 
 interface SelectFieldProps {
-    field: any,
-    form: any,
+    field: FieldInputProps<any>,
+    form: FormikProps<any>,
     label: string,
     placeholder: string,
     disabled: boolean,
@@ -16,8 +17,10 @@ interface SelectFieldProps {
 
 const SelectField = (props: SelectFieldProps) => {
 
-    const { disabled, field, label, placeholder, options } = props;
+    const { disabled, field, form, label, placeholder, options } = props;
     const { name, value } = field;
+    const { errors, touched } = form;
+    const showError: any = errors[name] && touched[name];
 
     const selectedOption = options.find(options => options.value === value);
 
@@ -45,7 +48,9 @@ const SelectField = (props: SelectFieldProps) => {
                 placeholder={placeholder}
                 options={options}
                 isDisabled={disabled}
+                className={showError ? "is-invalid" : ""}
             />
+            <ErrorMessage name={name} component={FormFeedback} />
         </FormGroup>
     )
 }
