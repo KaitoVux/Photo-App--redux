@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
-import "./header.scss"
+import { Col, Container, Row } from "reactstrap";
+import "./header.scss";
 
 interface HeaderProps {
 

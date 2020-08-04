@@ -1,9 +1,9 @@
+import Banner from 'components/Banner/Banner';
+import Images from 'constants/Images';
+import PhotoForm from 'features/Photo/components/PhotoForm';
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import Banner from '../../../../components/Banner/Banner';
-import Images from '../../../../constants/Images';
 import './style.scss';
-import PhotoForm from '../../components/PhotoForm';
+
 
 interface IAddEditProps { }
 
