@@ -4,11 +4,17 @@ import Images from 'constants/Images';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
+import { useSelector } from 'react-redux';
 
 
 interface IMainProps { }
 
 function MainPage(props: IMainProps) {
+
+    const photos = useSelector((state: any) => state.photos);
+    console.log('photos:', photos);
+
+
     return (
         <div className="photo-main">
             <Header />
