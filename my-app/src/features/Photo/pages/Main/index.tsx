@@ -2,25 +2,45 @@ import Banner from 'components/Banner/Banner';
 import { Header } from 'components/Header/header';
 import Images from 'constants/Images';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Container } from 'reactstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import PhotoList from 'features/Photo/components/PhotoList';
+import { IPhoto } from '../../../../@types/PhotoTypes';
+import { removePhoto } from 'features/Photo/photoSlice';
 
 
 interface IMainProps { }
 
 function MainPage(props: IMainProps) {
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const photos = useSelector((state: any) => state.photos);
-    console.log('photos:', photos);
 
+    const handleEditPhotoClick = (photo: IPhoto) => {
+        history.push(`/photos/${photo.id}`)
+    }
+
+    const handleRemovePhotoClick = (photo: IPhoto) => {
+        const removedPhotoId = photo.id;
+        dispatch(removePhoto(removedPhotoId));
+    }
 
     return (
         <div className="photo-main">
             <Header />
-            <Banner title="This is photo app" background={Images.MOUTAIN_BG} />
+            <Banner
+                title="Your memories"
+                background={Images.MOUTAIN_BG}
+            />
             <Container className="text-center">
-                <Link to="/photos/add">Add new photo </Link>
+                <Link style={{ margin: "30px 0", textDecoration: "none", display: "block" }} to="/photos/add">Add new photo </Link>
+                <PhotoList
+                    photosList={photos}
+                    onPhotoEditClick={handleEditPhotoClick}
+                    onPhotoRemoveClick={handleRemovePhotoClick}
+                />
             </Container>
         </div>
     );

@@ -11,6 +11,7 @@ interface PhotoProps {
 
 const Photo = (props: PhotoProps) => {
     const match = useRouteMatch();
+
     return (
         <Switch>
             <Route exact path={match.url} component={MainPage} />

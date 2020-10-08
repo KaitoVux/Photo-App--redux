@@ -15,7 +15,7 @@ export const Header = (props: HeaderProps) => {
                     <Col xs="auto">
                         <a
                             className="header__link Header__title"
-                            href="https://www.youtube.com/watch?v=CCLyaDid7u0"
+                            href="https://github.com/KaitoVux/Photo-App--redux"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
