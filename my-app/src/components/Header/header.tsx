@@ -25,11 +25,11 @@ export const Header = (props: HeaderProps) => {
                     <Col xs="auto">
                         <NavLink
                             exact
-                            to="/photos"
+                            to="/sign-in"
                             className="header__link"
                             activeClassName="header__link--active"
                         >
-                            Home
+                            Sign In
                         </NavLink>
                     </Col>
                 </Row>

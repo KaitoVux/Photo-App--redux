@@ -35,7 +35,9 @@ function MainPage(props: IMainProps) {
                 background={Images.MOUTAIN_BG}
             />
             <Container className="text-center">
-                <Link style={{ margin: "30px 0", textDecoration: "none", display: "block" }} to="/photos/add">Add new photo </Link>
+                <div className="py-5">
+                    <Link to="/photos/add" style={{ textDecoration: "none" }}><span>Add new photo</span></Link>
+                </div>
                 <PhotoList
                     photosList={photos}
                     onPhotoEditClick={handleEditPhotoClick}
